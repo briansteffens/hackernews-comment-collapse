@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Borderify",
+  "name": "Hacker News Comment Collapse",
   "version": "1.0",
 
-  "description": "Adds a solid red border to all webpages matching mozilla.org.",
+  "description": "Adds a collapse/expand button to Hacker News comments.",
 
   "applications": {
     "gecko": {
-      "id": "borderify@mozilla.org",
+      "id": "hackernews-comment-collapse@mozilla.org",
       "strict_min_version": "45.0.0"
     }
   },
@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "matches": ["*://news.ycombinator.com/item*"],
-      "js": ["borderify.js"]
+      "js": ["collapse.js"]
     }
   ]
 }
