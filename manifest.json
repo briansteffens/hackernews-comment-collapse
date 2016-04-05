@@ -7,7 +7,7 @@
 
   "applications": {
     "gecko": {
-      "id": "hackernews-comment-collapse",
+      "id": "hackernews-comment-collapse@mozilla.org",
       "strict_min_version": "45.0.0"
     }
   },
