@@ -19,7 +19,13 @@
 
       // Toggle display
       text.style.display = text.style.display === '' ? 'none' : '';
-      collapse.innerHTML = text.style.display === '' ? '[-]' : '[+]';
+
+      while (collapse.firstChild) {
+        collapse.removeChild(collapse.firstChild);
+      }
+      collapse.appendChild(document.createTextNode(
+          text.style.display === '' ? '[-]' : '[+]'));
+
       let origin_indent = comment.querySelector('td.ind img').width;
 
       for (let j = i + 1; j < comments.length; j++) {
