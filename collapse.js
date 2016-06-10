@@ -12,6 +12,7 @@
     collapse.style.cursor = 'pointer';
     collapse.style.marginRight = 5;
     collapse.style.fontFamily = 'monospace';
+    collapse.className = 'addon-comment-collapse';
     collapse.appendChild(document.createTextNode('[-]'));
 
     collapse.onclick = function() {
@@ -27,14 +28,28 @@
           text.style.display === '' ? '[-]' : '[+]'));
 
       let origin_indent = comment.querySelector('td.ind img').width;
+      let min_ignore_indent = Number.MAX_SAFE_INTEGER;
 
       for (let j = i + 1; j < comments.length; j++) {
         // Loop until the end of sub-comments
-        if (comments[j].querySelector('td.ind img').width <= origin_indent) {
+        let indent = comments[j].querySelector('td.ind img').width;
+        if (indent <= origin_indent) {
           break;
         }
 
+        // Skip nested collapsed subtrees
+        if (indent >= min_ignore_indent) {
+          continue;
+        }
+
         comments[j].style.display = text.style.display;
+
+        // Identify nested collapsed subtrees
+        if (comments[j].querySelector('.addon-comment-collapse').innerText == '[+]') {
+          min_ignore_indent = indent + 1;
+        } else {
+          min_ignore_indent = Number.MAX_SAFE_INTEGER;
+        }
       }
     };
 
