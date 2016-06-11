@@ -45,7 +45,8 @@
         comments[j].style.display = text.style.display;
 
         // Identify nested collapsed subtrees
-        if (comments[j].querySelector('.addon-comment-collapse').innerText == '[+]') {
+        let sub = comments[j].querySelector('.addon-comment-collapse');
+        if (sub.textContent == '[+]') {
           min_ignore_indent = indent + 1;
         } else {
           min_ignore_indent = Number.MAX_SAFE_INTEGER;
@@ -54,7 +55,6 @@
     };
 
     let comment_head = comment.querySelector('.comhead');
-    let username = comment.querySelector('.comhead a');
-    comment_head.insertBefore(collapse, username);
+    comment_head.insertBefore(collapse, comment_head.firstChild);
   }
 })();
