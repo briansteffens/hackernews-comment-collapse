@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Hacker News Comment Collapse",
-  "version": "1.1",
+  "version": "1.2",
   "homepage_url": "https://github.com/briansteffens/hackernews-comment-collapse",
 
   "description": "Adds a collapse/expand button to comments on Hacker News.",
